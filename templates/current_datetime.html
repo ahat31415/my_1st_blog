@@ -1,7 +1,9 @@
-﻿<html>
-<body>
-</body>
-</br>
-<h1>Сейчас {{current_date}}.</h1>
-</body>
-</html>
+﻿{% extends 'blog/base.html' %}
+
+{% block time %}
+    {{ block.super }}: Сейчас {{current_date}}.
+{% endblock %}
+
+{% block left %}
+<a href="{% url 'post_list' %}">Назад </a>
+{% endblock %}

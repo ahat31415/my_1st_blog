@@ -21,16 +21,13 @@ def current_datetime(request):
     return HttpResponse(html)
 
 
-def hours_ahead(request, offset):
+def hours_ahead(request, hours):
     try:
-        offset = int(offset)
+        hours = int(hours)
     except ValueError:
         raise Http404
-    dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-    dic = {'hours': offset,
-           'time': dt
-           }
-    return render(request, 'mytemplate.html', dic)
+    time = datetime.datetime.now() + datetime.timedelta(hours=hours)
+    return render(request, 'mytemplate.html', locals())
 
 
 def experiments(request):

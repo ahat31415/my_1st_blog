@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 
 def post_list(request):
     # представление для отображения постов в шаблон
-
     # Извлекаем посты сортируя их по дате публикации
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 
