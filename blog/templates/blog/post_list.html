@@ -1,17 +1,27 @@
 {% extends 'blog/base.html' %}
-{% block content %}
-{% for post in posts %}
-    <div class="post">
-        <br>
-        <div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <br>
-            <div class="date">
-                <p>Published: {{ post.published_date }}</p>
-            </div>
-            <p> {{ post.text | linebreaksbr }} </p>
-            <p class="date"> Created: {{ post.created_date }}</p>
-        </div>
-    </div>
-{% endfor %}
+{% block time %}
+    Сейчас {{ now }}.
 {% endblock %}
+
+{% block left %}
+    <a href="{% url 'post_list_2h' %}">Время через два часа: </a> {{ now2 }}
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <br>
+            <div>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <br>
+                <div class="date">
+                    <p>Опубликовано: {{ post.published_date }}</p>
+                </div>
+                <p> {{ post.text | linebreaksbr }} </p>
+                <p class="date"> Создано: {{ post.created_date }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+

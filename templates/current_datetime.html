@@ -1,9 +1,0 @@
-﻿{% extends 'blog/base.html' %}
-
-{% block time %}
-    {{ block.super }}: Сейчас {{current_date}}.
-{% endblock %}
-
-{% block left %}
-<a href="{% url 'post_list' %}">Назад </a>
-{% endblock %}

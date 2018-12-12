@@ -6,15 +6,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog2.css' %}">
 
-
-    <style>
-        h2, a {
-            color: #fff8fd;
-        }
-    </style>
 </head>
+
+
 <body>
 
 <div class="page-header">
@@ -24,7 +20,7 @@
     <h1><a href="/">The Best Site: Blog by Aydar</a></h1>
 
     <div align="left">
-        <h2>{% block time %} <a href="{% url 'current_datetime' %}">Узнать время</a>{% endblock %}</h2>
+        <h2>{% block time %} {% endblock %}</h2>
     </div>
 
     <div align="left">
@@ -44,5 +40,7 @@
 
     </div>
 </div>
+
 </body>
+
 </html>

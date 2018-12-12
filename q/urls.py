@@ -19,10 +19,7 @@ from django.contrib import admin
 from q.views import *
 from . import views  # импортируем все представления из приложения blog
 urlpatterns = [
-    url(r'^hello/$', hello),
-    url('^time/$', current_datetime, name='current_datetime'),
     url(r'time/plus/(\d{1,2})/$', views.hours_ahead, name='hours_ahead'), #views.post_detail, name='post_detail')
-    url(r'^some/$', experiments),
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
 ]

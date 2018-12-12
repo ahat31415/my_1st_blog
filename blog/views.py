@@ -4,13 +4,23 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
+import datetime
+
 
 def post_list(request):
     # представление для отображения постов в шаблон
     # Извлекаем посты сортируя их по дате публикации
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    now = datetime.datetime.now()
+    return render(request, 'blog/post_list.html', locals())
+
+
+def post_list_2h(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    now = datetime.datetime.now()
+    now2 = datetime.datetime.now() + datetime.timedelta(hours=2)
+    return render(request, 'blog/post_list.html', locals())
 
 
 def post_detail(request, pk):
@@ -32,6 +42,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -45,5 +56,3 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-
-
