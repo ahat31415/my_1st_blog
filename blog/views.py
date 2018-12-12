@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 import datetime
 
 
+
 def post_list(request):
     # представление для отображения постов в шаблон
     # Извлекаем посты сортируя их по дате публикации
@@ -56,3 +57,5 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
