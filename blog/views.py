@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 import datetime
 
 
-
 def post_list(request):
     # представление для отображения постов в шаблон
     # Извлекаем посты сортируя их по дате публикации
@@ -28,6 +27,16 @@ def post_detail(request, pk):
     # Post.objects.get(pk=pk)
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
+
+
+def delete_post(request, pk):
+    p = get_object_or_404(Post, pk=pk)
+    # p = Post.objects.get(title=pk.title)
+    p.delete()
+    # return render(request, 'blog/delete_post.html', {'message': 'deleted'})
+    return render(request, 'blog/post_detail.html', {'del': 'deleted'})
+    # else:
+    #     return render(request, 'blog/delete_post.html', {'message': 'something wrong!!!'})
 
 
 def post_new(request):
