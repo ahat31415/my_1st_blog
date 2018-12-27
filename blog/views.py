@@ -11,7 +11,6 @@ def post_list(request):
     # представление для отображения постов в шаблон
     # Извлекаем посты сортируя их по дате публикации
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-
     now = datetime.datetime.now()
     return render(request, 'blog/post_list.html', locals())
 
@@ -33,8 +32,9 @@ def delete_post(request, pk):
     p = get_object_or_404(Post, pk=pk)
     # p = Post.objects.get(title=pk.title)
     p.delete()
-    # return render(request, 'blog/delete_post.html', {'message': 'deleted'})
-    return render(request, 'blog/post_detail.html', {'del': 'deleted'})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    now = datetime.datetime.now()
+    return render(request, 'blog/post_list.html', locals())
     # else:
     #     return render(request, 'blog/delete_post.html', {'message': 'something wrong!!!'})
 
