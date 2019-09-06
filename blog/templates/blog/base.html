@@ -8,7 +8,40 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog2.css' %}">
+    <style>
+        {#div {#}
+        {#    margin: 10px;#}
+        {#    border: 1px solid black;#}
+        {#    font-size: 20px;#}
+        {#    height: 80px;}#}
 
+        #header {
+            background-color: #ccc;
+        }
+
+        #leftSidebar {
+            background-color: #ddd;
+            float: left;
+            width: 150px;
+        }
+
+        #rightSidebar {
+            background-color: #bb242e;
+            float: right;
+            width: 250px;
+            height: 20px;
+        }
+
+        #center {
+            background-color: #eee;
+            height: 200px;
+        }
+
+        #footer {
+            background-color: #ccc;
+        }
+
+    </style>
 </head>
 
 
@@ -16,19 +49,31 @@
 
 <div class="page-header">
     {% if user.is_authenticated %}
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+        <div align="right" class="rightSidebar">
+            <a href="{% url 'adding_posts' %}" class="top-menu">add posts</a>
+            <a href="{% url 'delete_posts' %}" class="top-menu">delete all posts</a>
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        </div>
+
     {% endif %}
-    <h1><a href="/">The Best Site: Blog by Aydar</a></h1>
+
 
     <div align="left">
+        <h1><a href="/">The Best Site: Blog by Aydar</a></h1>
         <h2>{% block time %} {% endblock %}</h2>
+        <h3>{% block left %}{% endblock %}</h3>
     </div>
 
-    <div align="left">
-        <h2>
-            {% block left %}{% endblock %}
-        </h2>
-    </div>
+    {#    <div align="left">#}
+    {#        <h2>{% block time %} {% endblock %}</h2>#}
+    {#    </div>#}
+    {##}
+    {#    <div align="left">#}
+    {#        <h2>#}
+    {#            {% block left %}{% endblock %}#}
+    {#        </h2>#}
+    {#    </div>#}
 </div>
 
 <div class="content container">
